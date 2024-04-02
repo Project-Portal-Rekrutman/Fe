@@ -1,7 +1,7 @@
-import "../../static/bootstrap/css/bootstrap.min.css";
-import "../../static/assets/owl.carousel/owl.carousel.min.css";
-import "../../static/assets/owl.carousel/owl.theme.default.css";
-import "../../static/css/style.css";
+import "../../../static/bootstrap/css/bootstrap.min.css";
+import "../../../static/assets/owl.carousel/owl.carousel.min.css";
+import "../../../static/assets/owl.carousel/owl.theme.default.css";
+import "../../../static/css/style.css";
 
 let index = () => {
     return (
