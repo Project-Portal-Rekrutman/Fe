@@ -4,8 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Landing from "./components/page/landing";
-import Score from "./components/page/admin/score";
+import Landing from "./components/page/landing/Index.js"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
