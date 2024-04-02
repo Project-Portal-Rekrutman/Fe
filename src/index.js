@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Landing from "./components/page/landing/Index.js"
+import Score from "./components/page/admin/score";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
