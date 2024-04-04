@@ -17,7 +17,7 @@ import firstslide from "../../../static/admin/assets/images/big/img1.jpg";
 
 import { Outlet, Link } from "react-router-dom";
 
-const Index = () => {
+const Index = ({children}) => {
     return (
         <body className="fix-header fix-sidebar card-no-border">
             <div id="main-wrapper">
@@ -265,10 +265,16 @@ const Index = () => {
                                     </ul> */}
                                 </li>
                                 <li>
-                                    <Link to="/demo"><i className="mdi mdi-gauge"></i>Demo</Link>
+                                    <Link to="/app-jobseeker"><i className="mdi mdi-gauge"></i>Application Jobseeker</Link>
                                 </li>
                                 <li>
-                                    <Link to="/Rout"><i className="mdi mdi-gauge"></i>Route</Link>
+                                    <Link to="/interview"><i className="mdi mdi-gauge"></i>Interview Schedule</Link>
+                                </li>
+                                <li>
+                                    <Link to="/grading"><i className="mdi mdi-gauge"></i>Grading Score</Link>
+                                </li>
+                                <li>
+                                    <Link to="/vacancy"><i className="mdi mdi-gauge"></i>Vacancy</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -281,12 +287,12 @@ const Index = () => {
                 </aside>
                 <div className="page-wrapper">
                     <div className="container-fluid">
-                        <Outlet />
-                        <h1>DASHBOARD</h1>
+                        {/* <Outlet /> */}
                         {/* content here */}
+                        <h1>DASHBOARD</h1>
                     </div>
                     <footer className="footer">
-                        © 2017 Monster Admin by wrappixel.com
+                        © 2017 Monster Admin by wrappixel.com heheh
                     </footer>
                 </div>
             </div>
