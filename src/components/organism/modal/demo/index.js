@@ -43,7 +43,7 @@ const ModalDemo = (props) => {
         <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> {/* Menggunakan onHide untuk menutup modal saat tombol close ditekan */}
           
             <Modal.Body>
-                Anda yakin Mengirim lamaran {props.selectedDetail}???
+                Anda yakin Mengirim lamaran di perusahaan kami ???
             </Modal.Body>
             <Modal.Footer>
                 <ButtonGroup >
