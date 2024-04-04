@@ -5,10 +5,12 @@ import { Button, ButtonGroup, Card, Col, Container, Image, Row } from "react-boo
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { apiUrl } from "../../../custom/envcutom.js";
+
 const IndexDetail = () => {
     const [detail, SetDetail] = useState({})
     const params = useParams();
 
+    
 
 
     const bulletStyle = {
@@ -47,7 +49,7 @@ const IndexDetail = () => {
                         <Col md={12}>
                             <Card>
                                 <Card.Body >
-                                    <Card.Img src={detail.image} style={{height:'50%'}} />
+                                    <Card.Img src={detail.image} style={{ height: '50%' }} />
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -97,9 +99,9 @@ const IndexDetail = () => {
                             <Card style={{ border: 'none' }}>
                                 <Card.Body>
 
-                                    <Button style={{ marginRight: '10px' }}>Send</Button>
+                                    <Button style={{ marginRight: '10px' }}>Send Application</Button>
 
-                                    <Button>Back</Button>
+                                    <Button >Back</Button>
 
                                 </Card.Body>
                             </Card>
