@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Landing from "./components/page/landing/Index.js"
+// import Landing from "./components/page/landing"
+// import { Provider } from 'react-redux';
+// import store from './app/store';
 import Login from "./components/page/login";
 import Score from "./components/organism/modal/score";
+import Register from "./components/page/register";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Score />
+    {/* <Provider store={store}>
+      
+    </Provider>, */}
+    <App />
+    {/* <Login /> */}
+  {/* <Register/> */}
   </React.StrictMode>
 );
 
