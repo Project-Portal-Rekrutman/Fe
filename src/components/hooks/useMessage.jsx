@@ -16,13 +16,20 @@ const useMessage = () => {
 
 
   const error = (error) => {
-    const {data } = error.response;
+    const {data} = error.response;
     Toast.fire({
       icon: "warning",
       title: data.message 
     });
   }
 
+  const errornotdata = (error) => {
+    const {message} = error.response;
+    Toast.fire({
+      icon: "warning",
+      title: message 
+    });
+  }
   const success = (response) => {
     const { data } = response;
     Toast.fire({
@@ -49,7 +56,7 @@ const useMessage = () => {
     confirm("Are you sure?", "You won't be able to revert this!", action)
   }
 
-  return {success, error, confirm, confirmRemove}
+  return {success, error, confirm, confirmRemove, errornotdata}
 }
 
 export default useMessage;
