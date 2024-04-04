@@ -5,12 +5,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Landing from "./components/page/landing/Index.js"
-import Score from "./components/page/admin/score";
+import Login from "./components/page/login";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Score />
+    <Login />
   </React.StrictMode>
 );
 
