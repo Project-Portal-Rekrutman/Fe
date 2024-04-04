@@ -268,7 +268,7 @@ const Index = ({children}) => {
                                     <Link to="/app-jobseeker"><i className="mdi mdi-gauge"></i>Application Jobseeker</Link>
                                 </li>
                                 <li>
-                                    <Link to="/interview"><i className="mdi mdi-gauge"></i>Interview Schedule</Link>
+                                    <Link to="/admin/interview"><i className="mdi mdi-gauge"></i>Interview Schedule</Link>
                                 </li>
                                 <li>
                                     <Link to="/grading"><i className="mdi mdi-gauge"></i>Grading Score</Link>

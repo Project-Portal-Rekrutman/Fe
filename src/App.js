@@ -10,6 +10,7 @@ import MyApp from "./components/page/myapp";
 import Progress from "./components/page/progress";
 import Layout from "./components/page/layout";
 import ListVacancy from './components/page/admin/vacancy/index.js';
+import ListInterview from './components/page/admin/interview';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route index element={<Dashboard/>} />
         {/* <Route path="demo" element={<Demo/>} /> */}
         {/* <Route path="/app-jobseeker" element={<ListApp />} /> */}
-      {/* <Route path="/interview" element={<ListInterview />} /> */}
+      <Route path="/admin/interview" element={<ListInterview />} />
       {/* <Route path="/grading" element={<ListGrading />} /> */}
       <Route path="/admin/vacancy" element={<ListVacancy />} />
       </Route>
