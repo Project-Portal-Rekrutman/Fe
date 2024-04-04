@@ -9,6 +9,7 @@ import Dashboard from "./components/page/admin/dashboard";
 import MyApp from "./components/page/myapp";
 import Progress from "./components/page/progress";
 import Layout from "./components/page/layout";
+import ListVacancy from './components/page/admin/vacancy/index.js';
 
 function App() {
   return (
@@ -20,11 +21,17 @@ function App() {
       <Route path="/index-detail/:id" element={<IndexDetail />} />
       <Route path="/my-app" element={<MyApp />} />
       <Route path="/progress/:id" element={<Progress />} />
-      <Route path="/admin" element={<Layout />} />
-      <Route path="/app-jobseeker" element={<ListApp />} />
-      <Route path="/interview" element={<ListInterview />} />
-      <Route path="/grading" element={<ListGrading />} />
-      <Route path="/vacancy" element={<ListVacancy />} />
+
+      <Route path="/admin" element={<Layout/>}>
+        <Route index element={<Dashboard/>} />
+        {/* <Route path="demo" element={<Demo/>} /> */}
+        {/* <Route path="/app-jobseeker" element={<ListApp />} /> */}
+      {/* <Route path="/interview" element={<ListInterview />} /> */}
+      {/* <Route path="/grading" element={<ListGrading />} /> */}
+      <Route path="/admin/vacancy" element={<ListVacancy />} />
+      </Route>
+      {/* <Route path="/admin" element={<Layout />} /> */}
+     
     </Routes>
   </BrowserRouter>
   );
