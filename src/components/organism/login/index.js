@@ -32,7 +32,8 @@ let Index = (props) => {
             // message.success(response)
             console.log(response)
             setLogin({ email: "", password: ""});
-            localStorage.setItem("user", response.data.token)
+            localStorage.setItem("user","Bearer " +   response.data.token)
+            // localStorage.setItem("user",response.data.token)
             localStorage.setItem("role", response.data.data)
             if (localStorage.getItem("role") === "jobseeker") {
                 navigate('/landing');

@@ -2,23 +2,42 @@ import { useNavigate, useParams } from "react-router-dom";
 import logo from "../../../static/images/amartha.PNG";
 import Navbar from "../../organism/navbar/index.js";
 import { Button, ButtonGroup, Card, Col, Container, Image, Row } from "react-bootstrap";
+import ModalDemo from "../../organism/modal/demo/index.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { apiUrl } from "../../../custom/envcutom.js";
+
 const IndexDetail = () => {
     const [detail, SetDetail] = useState({})
     const params = useParams();
 
-
-
-    const bulletStyle = {
+    const [showModal, setShowModal] = useState(false);
+    const [selectedDetail, setSelectedDetail] = useState(null);
+    const statusStyle = {
+        display: 'inline-block',
+        fontWeight: 'bold',
+        marginRight: '5px', 
+      };
+      const openModal = () => {
+        setShowModal(true);
+      };
+    
+      const closeModal = () => {
+        setSelectedDetail(null)
+        setShowModal(false);
+      };
+      const getDetailById = (id) => {
+        setSelectedDetail(id);
+        setShowModal(true);
+      }
+      const bulletStyle = {
         display: 'inline-block',
         width: '10px',
         height: '10px',
         borderRadius: '50%',
         backgroundColor: detail.status === 'aktif' ? 'green' : 'red',
-        animation: 'pulse 1s infinite alternate',
-    };
+        animation: 'pulse 1s infinite alternate', 
+      };
     const getId = () => {
 
         axios.get(`${apiUrl}vacancy/${params.id}`).then((response) => {
@@ -45,9 +64,9 @@ const IndexDetail = () => {
                 <Container>
                     <Row>
                         <Col md={12}>
-                            <Card>
+                            <Card style={{ border: 'none' }}>
                                 <Card.Body >
-                                    <Card.Img src={detail.image} style={{height:'50%'}} />
+                                    <Card.Img src={detail.image} style={{ height: '50%' }} />
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -56,7 +75,10 @@ const IndexDetail = () => {
                         <Col md={12} style={{ marginTop: '20px', marginBottom: '20px' }}>
                             <Card>
                                 <Card.Body>
-                                    {detail.status === 'aktif' && <span style={bulletStyle} />} {detail.status}
+                                    <Card.Title style={statusStyle}>
+                                        <span style={bulletStyle} />
+                                        {detail.status}
+                                    </Card.Title>
                                 </Card.Body>
                             </Card>
 
@@ -97,14 +119,15 @@ const IndexDetail = () => {
                             <Card style={{ border: 'none' }}>
                                 <Card.Body>
 
-                                    <Button style={{ marginRight: '10px' }}>Send</Button>
+                                    <Button onClick={() => getDetailById(detail.id)} style={{ marginRight: '10px' }}>Send Application</Button>
 
-                                    <Button>Back</Button>
+                                    <Button >Back</Button>
 
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
+                    <ModalDemo show={showModal} closeModal={closeModal}  setShowModal={setShowModal} selectedDetail={selectedDetail} />
                 </Container>
             </div>
         </div>

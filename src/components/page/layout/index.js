@@ -274,7 +274,7 @@ const Index = ({children}) => {
                                     <Link to="/grading"><i className="mdi mdi-gauge"></i>Grading Score</Link>
                                 </li>
                                 <li>
-                                    <Link to="/vacancy"><i className="mdi mdi-gauge"></i>Vacancy</Link>
+                                    <Link to="/admin/vacancy"><i className="mdi mdi-gauge"></i>Vacancy</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -287,9 +287,8 @@ const Index = ({children}) => {
                 </aside>
                 <div className="page-wrapper">
                     <div className="container-fluid">
-                        {/* <Outlet /> */}
+                        <Outlet />
                         {/* content here */}
-                        <h1>DASHBOARD</h1>
                     </div>
                     <footer className="footer">
                         © 2017 Monster Admin by wrappixel.com heheh
