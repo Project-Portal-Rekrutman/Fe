@@ -1,8 +1,8 @@
 let index = (props) => {
     return (
-        <nav className="navbar navbar-expand-md navbar-light">
+        <nav className="navbar navbar-expand-md navbar-light d-flex ">
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span className="navbar-toggler-icon"></span> </button>
-            <a className="navbar-brand" href="index.html"><img src={props.logo} alt="admin template" /></a>
+            <a className="navbar-brand" href="index.html"><img src={props.logo} alt="admin template" style={{ maxWidth: '15%', height: '15%' }} /></a>
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav ml-auto stylish-nav">
                     <li className="nav-item dropdown"> <a className="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demos</a>
