@@ -16,9 +16,6 @@ const ModalDemo = (props) => {
 
     let msg = useMessage()
 
-  
-
- 
 
     const handleSubmit = () => {
         const config = {
@@ -40,17 +37,15 @@ const ModalDemo = (props) => {
     }, [props.selectedDetail]);
 
     return (
-        <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> {/* Menggunakan onHide untuk menutup modal saat tombol close ditekan */}
-          
+        <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> 
+
             <Modal.Body>
                 Anda yakin Mengirim lamaran di perusahaan kami ???
             </Modal.Body>
             <Modal.Footer>
                 <ButtonGroup >
-
-                    <Button onClick={props.closeModal} style={{ marginRight: '10px' }}>CANCEL</Button>
-                   <Button onClick={handleSubmit}>Send</Button> 
-
+                <Button onClick={props.closeModal} style={{ marginRight: '10px' }}>CANCEL</Button>
+                <Button onClick={handleSubmit}>Send</Button> 
                 </ButtonGroup>
 
             </Modal.Footer>
