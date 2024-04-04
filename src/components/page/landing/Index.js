@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { apiUrl } from "../../../custom/envcutom.js";
-
+import {Link, useNavigate} from "react-router-dom";
 
 const Index = () => {
 
@@ -45,14 +45,14 @@ const Index = () => {
                                         {applies.map(data => {
 
                                             return (
-                                                <Card style={{ width: '18rem', margin: '20px 40px 20px 40px', borderRadius: '20px 20px 20px ' }}>
+                                                <Card style={{ width: '18rem', margin: '20px 40px 20px 40px', borderRadius: '20px 20px 20px ' }} >
                                                     <Card.Img variant="top" src={data.image} style={{ borderRadius: '50px 40px 50px ' }} />
                                                     <Card.Body>
                                                         <Card.Title>{data.title}</Card.Title>
                                                         <Card.Text>
                                                             {data.description}
                                                         </Card.Text>
-                                                        <Button variant="primary">Show Detail Lamaran</Button>
+                                                        <Link to={`/detailvacancy/${data.id}`} className={"text-decoration-none"}>click</Link>
                                                     </Card.Body>
                                                 </Card>
                                             )
