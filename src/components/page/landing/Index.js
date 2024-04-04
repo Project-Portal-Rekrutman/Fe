@@ -2,7 +2,7 @@ import "../../../static/bootstrap/css/bootstrap.min.css";
 import "../../../static/assets/owl.carousel/owl.carousel.min.css";
 import "../../../static/assets/owl.carousel/owl.theme.default.css";
 import "../../../static/css/style.css";
-import logo from "../../../static/images/amartha.PNG";
+import logo from "../../../static/images/amartha.jpg";
 import Navbar from "../../organism/navbar/index.js";
 import { Card, Col, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button'

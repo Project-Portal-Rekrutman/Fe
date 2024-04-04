@@ -47,7 +47,7 @@ const IndexDetail = () => {
                 <Container>
                     <Row>
                         <Col md={12}>
-                            <Card>
+                            <Card  style={{ border: 'none' }}> 
                                 <Card.Body >
                                     <Card.Img src={detail.image} style={{ height: '50%' }} />
                                 </Card.Body>
