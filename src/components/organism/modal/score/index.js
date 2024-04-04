@@ -37,10 +37,11 @@ let Index = () => {
     }
 
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-sm-12">
-                    <div className="card">
+
+        <Modal show={props.show} onHide={props.closeModal} size={"lg"} backdrop={"static"}> 
+
+            <Modal.Body>
+            <div className="card">
                         <div className="card-body">
                             <button className="btn btn-danger btn-sm pull-right collapsed" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Get code <i className="ti-angle-down"></i></button>
                             <h4 className="card-title">Input Score</h4>
@@ -92,9 +93,17 @@ let Index = () => {
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+            </Modal.Body>
+            <Modal.Footer>
+                <ButtonGroup >
+                <Button onClick={props.closeModal} style={{ marginRight: '10px' }}>CLOSE</Button>
+                {/* <Button onClick={handleSubmit}>Send</Button>  */}
+                </ButtonGroup>
+
+            </Modal.Footer>
+        </Modal>
+        
+       
 
     )
 }
