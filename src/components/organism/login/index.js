@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import {Link, useNavigate} from "react-router-dom";
 
 import useMessage from "../../hooks/useMessage";
 
@@ -10,6 +11,8 @@ let Index = (props) => {
     })
 
     const message = useMessage();
+
+    const navigate = useNavigate();
 
     const handleChange  = (e) => {
         const { name, value } = e.target
@@ -26,11 +29,16 @@ let Index = (props) => {
             data: login
         })
         .then((response) => {
-            message.success(response)
+            // message.success(response)
             console.log(response)
             setLogin({ email: "", password: ""});
+            localStorage.setItem("user", response.data.token)
+            localStorage.setItem("role", response.data.data)
+            if (localStorage.getItem("role") === "jobseeker") {
+                navigate('/landing');
+            }
         }).catch((error) => {
-            message.error(error)
+            // message.error(error)
             console.log(error)
         })
     }
@@ -78,7 +86,7 @@ let Index = (props) => {
         </div>
         <div className="form-group m-b-0">
             <div className="col-sm-12 text-center">
-                <p>Don't have an account? <a href="register.html" className="text-info m-l-5"><b>Sign Up</b></a></p>
+                <p>Don't have an account? <Link to={`/register`} className={"text-decoration-none"}><b>Sign Up</b></Link></p>
             </div>
         </div>
     </form>
