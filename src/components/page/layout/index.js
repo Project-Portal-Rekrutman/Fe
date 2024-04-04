@@ -265,10 +265,16 @@ const Index = ({children}) => {
                                     </ul> */}
                                 </li>
                                 <li>
-                                    <Link to="/demo"><i className="mdi mdi-gauge"></i>Demo</Link>
+                                    <Link to="/app-jobseeker"><i className="mdi mdi-gauge"></i>Application Jobseeker</Link>
                                 </li>
                                 <li>
-                                    <Link to="/Rout"><i className="mdi mdi-gauge"></i>Route</Link>
+                                    <Link to="/interview"><i className="mdi mdi-gauge"></i>Interview Schedule</Link>
+                                </li>
+                                <li>
+                                    <Link to="/grading"><i className="mdi mdi-gauge"></i>Grading Score</Link>
+                                </li>
+                                <li>
+                                    <Link to="/vacancy"><i className="mdi mdi-gauge"></i>Vacancy</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -283,7 +289,7 @@ const Index = ({children}) => {
                     <div className="container-fluid">
                         {/* <Outlet /> */}
                         {/* content here */}
-                        {children}
+                        <h1>DASHBOARD</h1>
                     </div>
                     <footer className="footer">
                         © 2017 Monster Admin by wrappixel.com heheh

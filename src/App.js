@@ -21,6 +21,10 @@ function App() {
       <Route path="/my-app" element={<MyApp />} />
       <Route path="/progress/:id" element={<Progress />} />
       <Route path="/admin" element={<Layout />} />
+      <Route path="/app-jobseeker" element={<ListApp />} />
+      <Route path="/interview" element={<ListInterview />} />
+      <Route path="/grading" element={<ListGrading />} />
+      <Route path="/vacancy" element={<ListVacancy />} />
     </Routes>
   </BrowserRouter>
   );
