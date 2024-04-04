@@ -34,7 +34,7 @@ const Index = () => {
                 <Container>
                     <Row>
                         <Col md={12}>
-                            {myApp.map(data => {
+                            {myApp?.map(data => {
 
                                 return (
                                     <Card style={{ width: '18rem', margin: '20px 40px 20px 40px', borderRadius: '20px 20px 20px ' }} >
