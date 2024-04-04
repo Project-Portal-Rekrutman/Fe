@@ -1,54 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import ModalDemo from "../../../organism/modal/demo";
-import Swal from 'sweetalert2';
-import { apiUrl } from "../../../../custom/envcutom.js";
+import axios from "axios"
+
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap"
+import { useState, useEffect } from "react";
+import { apiUrl } from "../../../../custom/envcutom.js";
+const ListInterview = () => {
 
-let Index = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [editItemId, setEditItemId] = useState(null);
-    const [list, setList] = useState([]);
+    const [listData, setListData] = useState([])
 
-    // useEffect(() => {
+    const getData = () => {
 
-    useEffect(() => {
-        axios.get(`${apiUrl}interview`).then((response) => {
-            setList(response.data.data)
-            console.log(response.data.data)
-        })
-    }, [])
-    // })
+      axios.get(`${apiUrl}interview`).then((response) => {
+          setListData(response.data.data)
+          console.log(response.data.data);
+      })
+  }
+  useEffect(() => {
+      getData();
+  }, [])
+
+  let changeFormat = (data) => {
+    let formattedString = data.replace('T', ' ');
+    return formattedString;
+  }
+
     return (
-        <Table responsive={true} striped={true} borderless={true}>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Schedule</th>
-                    <th>Interview Status</th>
-                    <th>Interview Date</th>
-                    <th>Interviewer</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {/* {list.map((value) => (
-                    <tr key={value.id}>
-                        <td>{value.title}</td>
-                        <td>{value.description}</td>
-                        <td>{value.qualification}</td>
-                        <td>{value.salary}</td>
-                        <td>{value.status}</td>
-                        <td>{value.jobType}</td>
-                        <Button style={{ marginRight: '20px' }}>Edit</Button>
+        <>
+            <Container>
+                <Row>
+                    <Col>
+                        <Card>
+                            <Card.Body>
+                                <Table  responsive={true} striped={true} borderless={true}>
+                                    <thead>
+                                        <tr>
+                                            <th>Jobseeker Name</th>
+                                            <th>Schedule</th>
+                                            <th>Location</th>
+                                            <th>Interviewer Name</th>
+                                            <th>Interview Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {listData.map((value) => (
+                                            <tr key={value.id}>
+                                                <td>{value.apply.participant.user.name}</td>
+                                                <td>{changeFormat(value.schedule)}</td>
+                                                <td>{value.location}</td>
+                                                <td>{value.inteviewerName}</td>
+                                                <td>{value.interviewStatus}</td>
+                                                <td>
+                                                  <Button style={{marginRight:'20px'}}>Grade Score</Button>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
 
-                        <Button>Delete</Button>
-                    </tr>
-                ))} */}
-            </tbody>
-        </Table>
+        </>
     )
 }
 
-export default Index;
+export default ListInterview;

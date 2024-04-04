@@ -265,7 +265,7 @@ const Index = ({children}) => {
                                     </ul> */}
                                 </li>
                                 <li>
-                                    <Link to="/app-jobseeker"><i className="mdi mdi-gauge"></i>Application Jobseeker</Link>
+                                    <Link to="/admin/application"><i className="mdi mdi-gauge"></i>Application Jobseeker</Link>
                                 </li>
                                 <li>
                                     <Link to="/admin/interview"><i className="mdi mdi-gauge"></i>Interview Schedule</Link>
