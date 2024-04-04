@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Landing from "./components/page/landing/Index.js"
+import Landing from "./components/page/landing"
 import { BrowserRouter, Routes, Route } from "react-router-dom";  
 import IndexDetail from './components/page/detail/Index.js';
 function App() {
