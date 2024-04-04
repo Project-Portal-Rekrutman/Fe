@@ -17,7 +17,7 @@ import firstslide from "../../../static/admin/assets/images/big/img1.jpg";
 
 import { Outlet, Link } from "react-router-dom";
 
-const Index = () => {
+const Index = ({children}) => {
     return (
         <body className="fix-header fix-sidebar card-no-border">
             <div id="main-wrapper">
@@ -281,12 +281,12 @@ const Index = () => {
                 </aside>
                 <div className="page-wrapper">
                     <div className="container-fluid">
-                        <Outlet />
-                        <h1>DASHBOARD</h1>
+                        {/* <Outlet /> */}
                         {/* content here */}
+                        {children}
                     </div>
                     <footer className="footer">
-                        © 2017 Monster Admin by wrappixel.com
+                        © 2017 Monster Admin by wrappixel.com heheh
                     </footer>
                 </div>
             </div>
