@@ -52,7 +52,7 @@ const Index = () => {
                                                         <Card.Text>
                                                             {data.description}
                                                         </Card.Text>
-                                                        <Link to={`/detailvacancy/${data.id}`} className={"text-decoration-none"}>click</Link>
+                                                        <Link to={`/index-detail/${data.id}`} className={"text-decoration-none"}>click</Link>
                                                     </Card.Body>
                                                 </Card>
                                             )
