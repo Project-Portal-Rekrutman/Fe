@@ -7,6 +7,7 @@ import { FaCheck, FaTimes } from 'react-icons/fa';
 const ListApplication = () => {
     const [listData, setListData] = useState([]);
     const [checklistStatus, setChecklistStatus] = useState({});
+    const [isButtonActive, setIsButtonActive] = useState(false);
 
     const getData = () => {
         const config = {
@@ -26,6 +27,10 @@ const ListApplication = () => {
         getData();
     }, []);
 
+    const handleButtonActivate = () => {
+        setIsButtonActive(true); // Mengaktifkan tombol checklist dan silang
+    };
+
     const handleChecklistClick = (id, status, appstatus) => {
         setChecklistStatus(prevState => ({
             ...prevState,
@@ -33,11 +38,11 @@ const ListApplication = () => {
         }));
 
         // Update screening status based on the button value
-        axios.post(`${apiUrl}screening/update`, { 
+        axios.post(`${apiUrl}screening/update`, {
             id: id,
             screeningStatus: status,
             appStatus: appstatus
-             })
+        })
             .then((response) => {
                 console.log("Screening status updated successfully:", response.data);
                 getData();
@@ -78,17 +83,26 @@ const ListApplication = () => {
                                                 <td>
                                                     <Button
                                                         style={{ marginRight: '10px' }}
-                                                        onClick={() => handleChecklistClick(value.id, 'Accepted', 'Done')} // Memanggil fungsi saat tombol checklist ditekan
+                                                        onClick={handleButtonActivate} // Mengaktifkan tombol checklist dan silang
+                                                        disabled={isButtonActive} // Tombol akan dinonaktifkan jika tombol aktif
+                                                    >
+                                                        CV
+                                                    </Button>
+                                                    <Button
+                                                        style={{ marginRight: '10px' }}
+                                                        onClick={() => handleChecklistClick(value.id, 'Accepted', 'Done')}
+                                                        disabled={!isButtonActive} // Memanggil fungsi saat tombol checklist ditekan
 
                                                     >
                                                         <FaCheck />
                                                     </Button>
                                                     <Button style={{ marginRight: '10px' }}
                                                         onClick={() => handleChecklistClick(value.id, 'Rejected', 'Done')}
+                                                        disabled={!isButtonActive}
                                                     >
                                                         <FaTimes />
                                                     </Button>
-                                                    {checklistStatus[value.id] &&  value.screeningStatus === 'Accepted' && (
+                                                    {checklistStatus[value.id] && value.screeningStatus === 'Accepted' && (
                                                         <Button>Create Interview</Button>
                                                     )}
                                                 </td>
