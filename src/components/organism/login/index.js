@@ -37,6 +37,8 @@ let Index = (props) => {
             localStorage.setItem("role", response.data.data)
             if (localStorage.getItem("role") === "jobseeker") {
                 navigate('/landing');
+            } else if (localStorage.getItem("role") === "recruiter") {
+                navigate('/admin');
             }
         }).catch((error) => {
             // message.error(error)
