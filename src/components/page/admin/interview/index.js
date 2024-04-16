@@ -1,27 +1,37 @@
-import axios from "axios"
-
-import { Button, Card, Col, Container, Row, Table } from "react-bootstrap"
+import axios from "axios";
+import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { apiUrl } from "../../../../custom/envcutom.js";
-const ListInterview = () => {
+import Index from "../../../organism/modal/score"; // Import komponen Index
 
-    const [listData, setListData] = useState([])
+const ListInterview = () => {
+    const [listData, setListData] = useState([]);
 
     const getData = () => {
+        axios.get(`${apiUrl}interview`).then((response) => {
+            setListData(response.data.data);
+            console.log(response.data.data);
+        }).catch((error) => {
+            console.error("Error fetching interview data:", error);
+        });
+    };
 
-      axios.get(`${apiUrl}interview`).then((response) => {
-          setListData(response.data.data)
-          console.log(response.data.data);
-      })
-  }
-  useEffect(() => {
-      getData();
-  }, [])
+    useEffect(() => {
+        getData();
+    }, []);
 
-  let changeFormat = (data) => {
-    let formattedString = data.replace('T', ' ');
-    return formattedString;
-  }
+    let changeFormat = (data) => {
+        let formattedString = data.replace('T', ' ');
+        return formattedString;
+    };
+
+    const [modalShow, setModalShow] = useState(false);
+    const [selectedInterviewId, setSelectedInterviewId] = useState(null);
+
+    const openModal = (interviewId) => {
+        setSelectedInterviewId(interviewId);
+        setModalShow(true);
+    };
 
     return (
         <>
@@ -30,7 +40,7 @@ const ListInterview = () => {
                     <Col>
                         <Card>
                             <Card.Body>
-                                <Table  responsive={true} striped={true} borderless={true}>
+                                <Table responsive striped borderless>
                                     <thead>
                                         <tr>
                                             <th>Jobseeker Name</th>
@@ -50,7 +60,12 @@ const ListInterview = () => {
                                                 <td>{value.inteviewerName}</td>
                                                 <td>{value.interviewStatus}</td>
                                                 <td>
-                                                  <Button style={{marginRight:'20px'}}>Grade Score</Button>
+                                                    <Button
+                                                        style={{ marginRight: '20px' }}
+                                                        onClick={() => openModal(value.id)} // Meneruskan value.id sebagai parameter
+                                                    >
+                                                        Grade Score
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         ))}
@@ -62,8 +77,14 @@ const ListInterview = () => {
                 </Row>
             </Container>
 
+            {/* Modal untuk menampilkan input score */}
+            <Index
+                show={modalShow}
+                closeModal={() => setModalShow(false)}
+                id={selectedInterviewId} // Meneruskan selectedInterviewId ke komponen Index
+            />
         </>
-    )
-}
+    );
+};
 
 export default ListInterview;

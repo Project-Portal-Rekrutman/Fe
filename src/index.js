@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 // import { Provider } from 'react-redux';
 // import store from './app/store';
 import Login from "./components/page/login";
+import Score from "./components/organism/modal/score";
 import Register from "./components/page/register";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
