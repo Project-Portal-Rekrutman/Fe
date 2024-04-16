@@ -9,23 +9,40 @@ import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { apiUrl } from "../../../custom/envcutom.js";
-import {Link, useNavigate} from "react-router-dom";
+import ModalEducation from "../../organism/modal/education/index.js";
+import { Link, useNavigate } from "react-router-dom";
 
-const Index = () => {
+const ListEducation = () => {
 
-    const [cv, setCv] = useState([]);
+    const [listData, setListData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
 
     const getData = () => {
         axios.get(`${apiUrl}educations`).then((response) => {
-            setCv(response.data.data)
-
+            setListData(response.data.data)
+            console.log(response.data.data);
         })
-
     }
 
     useEffect(() => {
-        getData()
-    })
+        getData();
+    }, [])
+
+    const getIdParticipantEducation = (data) => {
+        setSelectedId(data);
+        setShowModal(true);
+      }
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        setSelectedId(null);
+    };
+
 
     return (
         <div className="fix-header">
@@ -42,26 +59,29 @@ const Index = () => {
                             <div className="col-md-12" id="demos">
                                 <div className="fix-width">
                                     <div className="row text-center">
-                                        {cv.map(data => {
+                                        {listData.map((value) => {
 
                                             return (
                                                 <Card style={{ width: '18rem', margin: '20px 40px 20px 40px', borderRadius: '20px 20px 20px ' }} >
-                                                    <Card.Img variant="top" src={data.image} style={{ borderRadius: '50px 40px 50px ' }} />
+                                                    {/* <Card.Img variant="top" src={data.image} style={{ borderRadius: '50px 40px 50px ' }} /> */}
                                                     <Card.Body>
                                                         <Card.Title>Education</Card.Title>
                                                         <Card.Text>
-                                                            {data.name_univ}
+                                                            {value.name_univ}
                                                         </Card.Text>
                                                         <Card.Text>
-                                                            {data.name_major}
+                                                            {value.name_major}
                                                         </Card.Text>
                                                         <Card.Text>
-                                                            {data.name_degree}
+                                                            {value.name_degree}
                                                         </Card.Text>
                                                         <Card.Text>
-                                                            {data.gpa}
+                                                            {value.gpa}
                                                         </Card.Text>
                                                     </Card.Body>
+                                                    <td>
+                                                        <Button onClick={() => getIdParticipantEducation(value.id)} style={{ marginRight: '20px' }}>Create Education</Button>
+                                                    </td>
                                                 </Card>
                                             )
                                         })}
@@ -69,16 +89,7 @@ const Index = () => {
                                 </div>
                             </div>
                         </div>
-                        <footer className="footer row">
-                            <div className="fix-width">
-                                <div className="clearfix"></div>
-                                <div className="col-md-11 sub-footer">
-                                    <span>Copyright 2017. All Rights Reserved by <a className="text-white" href="https://wrappixel.com/templates/monsteradmin/" target="_blank">Monster Admin</a></span>
-                                    <span className="pull-right">Design & Developed by <a className="text-white" href="https://wrappixel.com" target="_blank">WrapPixel</a></span>
-
-                                </div>
-                            </div>
-                        </footer>
+                        <ModalEducation show={showModal} closeModal={closeModal} setShowModal={setShowModal} selectedId={selectedId} />
                     </div>
                 </div>
             </div>
@@ -93,4 +104,4 @@ const Index = () => {
     )
 }
 
-export default Index;
+export default ListEducation;

@@ -6,7 +6,7 @@ import IndexDetail from './components/page/detail/Index.js';
 import Register from "./components/page/register";
 import Login from "./components/page/login";
 import Layout from "./components/page/layout";
-import Education from "./components/organism/modal/cv/index.js"
+import ListEducation from './components/page/resume/index.js';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Route path="/landing" element={<Landing />} />
       <Route path="/index-detail/:id" element={<IndexDetail />} />
       <Route path="/dashboard" element={<Layout />} />
-      <Route path="/education" element={<Education />} />
+      <Route path="/education" element={<ListEducation />} />
     </Routes>
   </BrowserRouter>
   );
