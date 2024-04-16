@@ -2357,3 +2357,25 @@ File: scss
     line-height: 30px;
   }
 }
+
+
+.item-vacancy :hover{
+  position: relative;
+  cursor: pointer;  
+  transform: translate(0%, 6%) scale(1);
+  background-color: white;
+}
+button:hover{
+  cursor: pointer;
+}
+
+.item-vacancy{
+  display: flex;
+  justify-content: center;
+  height:100%;
+  width:100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  transition: 0.5s;
+  box-sizing: border-box;
+}

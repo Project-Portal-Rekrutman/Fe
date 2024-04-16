@@ -28,6 +28,7 @@ const ModalDemo = (props) => {
         props.setShowModal(false)
         navigate("/landing")
        }).catch((error)=>{
+        console.log("ini err",error.response)
         msg.error(error)
        })
     };

@@ -29,7 +29,7 @@ let Index = (props) => {
             data: login
         })
         .then((response) => {
-            // message.success(response)
+            message.success(response)
             console.log(response)
             setLogin({ email: "", password: ""});
             localStorage.setItem("user","Bearer " +   response.data.token)
@@ -39,7 +39,7 @@ let Index = (props) => {
                 navigate('/landing');
             }
         }).catch((error) => {
-            // message.error(error)
+            message.error(error)
             console.log(error)
         })
     }
@@ -49,12 +49,26 @@ let Index = (props) => {
         <h3 className="box-title m-b-20">Sign In</h3>
         <div className="form-group ">
             <div className="col-xs-12">
-                <input className="form-control" name="email" value={login.email} onChange={handleChange} type="text" required="" placeholder="Username" />
+                <input
+                 className="form-control" 
+                 name="email" 
+                 value={login.email} 
+                 onChange={handleChange}
+                  type="text"
+                  required="" 
+                  placeholder="Username" />
             </div>
         </div>
         <div className="form-group">
             <div className="col-xs-12">
-                <input className="form-control" name="password" value={login.password} onChange={handleChange} type="password" required="" placeholder="Password" />
+                <input
+                className="form-control" 
+                name="password" 
+                value={login.password} 
+                onChange={handleChange} 
+                type="password" 
+                required="" 
+                placeholder="Password" />
             </div>
         </div>
         <div className="form-group">

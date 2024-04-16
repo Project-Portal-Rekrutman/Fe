@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 import { apiUrl } from "../../../../custom/envcutom.js";
 import ModalVacancy from "../../../organism/modal/vacancy/index.js";
 import useMessage from "../../../hooks/useMessage.jsx";
+import {Link, useNavigate} from "react-router-dom";
 const ListVacancy = () => {
     let msg = useMessage()
     const [listData, setListData] = useState([])
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
     const getData = () => {
         axios.get(`${apiUrl}vacancys`).then((response) => {
@@ -19,25 +20,16 @@ const ListVacancy = () => {
         })
 
     }
-    const openModal = () => {
-        setShowModal(true);
-      };
-    
-      const closeModal = () => {
-        setSelectedId(null)
-        setShowModal(false);
-      };
+    const navigate = useNavigate();
+ 
 
-      const getDemoById = (id) => {
-        setSelectedId(id);
-        setShowModal(true);
-      }
+
     useEffect(() => {
         getData()
     })
     const deleteById = (id) => {
         msg.confirmRemove(() => {
-          console.log("ini id", id)
+
           axios.delete(`${apiUrl}vacancy/${id}`).then((response) => {
             msg.success(response)
            getData()
@@ -50,15 +42,16 @@ const ListVacancy = () => {
 
     return (
         <>
-            <Container>
+            <Container >
                 <Row>
                     <Col>
-                    <Button  style={{marginBottom:'20px'}}  onClick={openModal}>CREATE</Button>
-                        <Card>
+                    <Button onClick={() => navigate("/admin/form-vacancy")}>New Barang</Button>
+                        <Card >
                             <Card.Body>
                                 <Table  responsive={true} striped={true} borderless={true}>
                                     <thead>
                                         <tr>
+                                            <th>NO</th>
                                             <th>Title</th>
                                             <th>Description</th>
                                             <th>Qualification</th>
@@ -69,15 +62,22 @@ const ListVacancy = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {listData.map((value) => (
+                                        {listData.map((value,index) => (
                                             <tr key={value._id}>
+                                                <td>{index + 1}</td>
                                                 <td>{value.title}</td>
                                                 <td>{value.description}</td>
                                                 <td>{value.qualification}</td>
                                                 <td>{value.salary}</td>
                                                 <td>{value.status}</td>
                                                 <td>{value.jobType}</td>
-                                                <Button  style={{marginRight:'20px'}} onClick={() => getDemoById(value.id)}>Edit</Button>
+                                                <Button 
+                                                onClick=
+                                                {() => navigate("/admin/form-vacancy"
+                                                 ,{state:value.id})
+                                                }
+                                            >
+                                            edit</Button>
 
                                                 <Button onClick={() => deleteById(value.id)}>Delete</Button>
                                             </tr>
@@ -89,7 +89,7 @@ const ListVacancy = () => {
                     </Col>
                 </Row>
 
-                <ModalVacancy show={showModal} closeModal={closeModal}  setShowModal={setShowModal} selectedId={selectedId} getData={getData}  />
+                {/* <ModalVacancy show={showModal} closeModal={closeModal}  setShowModal={setShowModal} selectedId={selectedId} getData={getData}  /> */}
             </Container>
 
         </>

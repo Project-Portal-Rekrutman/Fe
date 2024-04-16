@@ -12,6 +12,7 @@ import Layout from "./components/page/layout";
 import ListVacancy from './components/page/admin/vacancy/index.js';
 import ListApplication from "./components/page/admin/application";
 import ListInterview from './components/page/admin/interview/index.js';
+import FormVacancy from './components/page/admin/form-vacancy/index.js';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       {/* <Route path="/grading" element={<ListGrading />} /> */}
       <Route path="/admin/vacancy" element={<ListVacancy />} />
       <Route path="/admin/application" element={<ListApplication />} />
+      <Route path="/admin/form-vacancy" element={<FormVacancy />} />
       </Route>
       {/* <Route path="/admin" element={<Layout />} /> */}
      
